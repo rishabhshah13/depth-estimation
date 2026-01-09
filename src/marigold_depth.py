@@ -38,7 +38,7 @@ from PIL import Image
 
 # Add Marigold directory to path for imports
 SCRIPT_DIR = Path(__file__).resolve().parent
-MARIGOLD_DIR = SCRIPT_DIR / "Marigold"
+MARIGOLD_DIR = SCRIPT_DIR.parent / "models" / "Marigold"
 
 if MARIGOLD_DIR.exists():
     sys.path.insert(0, str(MARIGOLD_DIR))
@@ -53,7 +53,7 @@ try:
 except ImportError as e:
     raise ImportError(
         "Failed to import Marigold modules. Please ensure all dependencies are installed: "
-        "pip install -r Marigold/requirements.txt"
+        "pip install -r models/Marigold/requirements.txt"
     ) from e
 
 

@@ -34,12 +34,12 @@ except ImportError:
 
 # Import the three depth estimation modules
 try:
-    from midas_depth import MiDaSDepthEstimator
-    from depth_anything import DepthEstimator as DepthAnythingEstimator
-    from marigold_depth import MarigoldDepthEstimator
+    from src.midas_depth import MiDaSDepthEstimator
+    from src.depth_anything import DepthEstimator as DepthAnythingEstimator
+    from src.marigold_depth import MarigoldDepthEstimator
 except ImportError as e:
     print(f"Error importing depth estimation modules: {e}")
-    print("Make sure all three depth estimation scripts are in the current directory.")
+    print("Make sure all three depth estimation scripts are in the src/ directory.")
     sys.exit(1)
 
 
@@ -337,8 +337,8 @@ def create_interface():
         gr.Markdown("### 📸 Example Images")
         gr.Examples(
             examples=[
-                ["Depth-Anything-V2/assets/examples/demo01.jpg"] if os.path.exists("Depth-Anything-V2/assets/examples/demo01.jpg") else None,
-                ["Depth-Anything-V2/assets/examples/demo02.jpg"] if os.path.exists("Depth-Anything-V2/assets/examples/demo02.jpg") else None,
+                ["models/Depth-Anything-V2/assets/examples/demo01.jpg"] if os.path.exists("models/Depth-Anything-V2/assets/examples/demo01.jpg") else None,
+                ["models/Depth-Anything-V2/assets/examples/demo02.jpg"] if os.path.exists("models/Depth-Anything-V2/assets/examples/demo02.jpg") else None,
             ],
             inputs=input_image,
             label="Click to load example"

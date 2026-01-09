@@ -30,24 +30,24 @@ import matplotlib.gridspec as gridspec
 
 # Import the three depth estimation modules
 try:
-    from midas_depth import MiDaSDepthEstimator
+    from src.midas_depth import MiDaSDepthEstimator
 except ImportError as e:
     print(f"Error importing MiDaS: {e}")
-    print("Make sure midas_depth.py is in the current directory")
+    print("Make sure midas_depth.py is in the src/ directory")
     sys.exit(1)
 
 try:
-    from depth_anything import DepthEstimator as DepthAnythingEstimator
+    from src.depth_anything import DepthEstimator as DepthAnythingEstimator
 except ImportError as e:
     print(f"Error importing Depth Anything: {e}")
-    print("Make sure depth_anything.py is in the current directory")
+    print("Make sure depth_anything.py is in the src/ directory")
     sys.exit(1)
 
 try:
-    from marigold_depth import MarigoldDepthEstimator
+    from src.marigold_depth import MarigoldDepthEstimator
 except ImportError as e:
     print(f"Error importing Marigold: {e}")
-    print("Make sure marigold_depth.py is in the current directory")
+    print("Make sure marigold_depth.py is in the src/ directory")
     sys.exit(1)
 
 

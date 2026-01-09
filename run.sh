@@ -79,7 +79,7 @@ if [ "$MODE" = "gui" ]; then
     echo ""
 
     # Run the GUI
-    .venv/bin/python app_gui.py
+    .venv/bin/python -m src.app_gui
 
 else
     # CLI Mode
@@ -94,5 +94,5 @@ else
     fi
 
     # Run the CLI
-    .venv/bin/python depth_comparison_app.py $CLI_ARGS
+    .venv/bin/python -m src.depth_comparison_app $CLI_ARGS
 fi

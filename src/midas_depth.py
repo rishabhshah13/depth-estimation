@@ -34,7 +34,7 @@ import warnings
 
 # Add MiDaS directory to path
 SCRIPT_DIR = Path(__file__).parent.absolute()
-MIDAS_DIR = SCRIPT_DIR / "MiDaS"
+MIDAS_DIR = SCRIPT_DIR.parent / "models" / "MiDaS"
 
 if not MIDAS_DIR.exists():
     raise FileNotFoundError(

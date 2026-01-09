@@ -13,6 +13,9 @@ import sys
 import os
 from pathlib import Path
 
+# Add parent directory to Python path to enable imports from src/
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 
 def check_python_version():
     """Check if Python version is compatible."""
@@ -77,9 +80,9 @@ def check_repositories():
     print("=" * 60)
 
     repos = {
-        'MiDaS': 'MiDaS',
-        'Depth-Anything-V2': 'Depth Anything V2',
-        'Marigold': 'Marigold'
+        'models/MiDaS': 'MiDaS',
+        'models/Depth-Anything-V2': 'Depth Anything V2',
+        'models/Marigold': 'Marigold'
     }
 
     missing = []
@@ -105,9 +108,9 @@ def check_modules():
     print("=" * 60)
 
     modules = {
-        'midas_depth': 'MiDaS Module',
-        'depth_anything': 'Depth Anything Module',
-        'marigold_depth': 'Marigold Module'
+        'src.midas_depth': 'MiDaS Module',
+        'src.depth_anything': 'Depth Anything Module',
+        'src.marigold_depth': 'Marigold Module'
     }
 
     missing = []
@@ -134,7 +137,7 @@ def check_model_weights():
     print("=" * 60)
 
     # Check Depth Anything V2 checkpoints
-    checkpoint_dir = Path("Depth-Anything-V2/checkpoints")
+    checkpoint_dir = Path("models/Depth-Anything-V2/checkpoints")
     if checkpoint_dir.exists():
         checkpoints = list(checkpoint_dir.glob("*.pth"))
         if checkpoints:
@@ -144,7 +147,7 @@ def check_model_weights():
         else:
             print("⚠ Depth Anything V2 checkpoints not found")
             print("  Download with:")
-            print("  cd Depth-Anything-V2/checkpoints")
+            print("  cd models/Depth-Anything-V2/checkpoints")
             print("  wget https://huggingface.co/depth-anything/Depth-Anything-V2-Small/resolve/main/depth_anything_v2_vits.pth")
     else:
         print("⚠ Depth Anything V2 checkpoint directory not found")
@@ -188,8 +191,8 @@ def check_test_images():
     print("=" * 60)
 
     test_images = [
-        "Depth-Anything-V2/assets/examples/demo01.jpg",
-        "Depth-Anything-V2/assets/examples/demo02.jpg"
+        "models/Depth-Anything-V2/assets/examples/demo01.jpg",
+        "models/Depth-Anything-V2/assets/examples/demo02.jpg"
     ]
 
     found = []
@@ -217,7 +220,7 @@ def test_quick_inference():
     try:
         import numpy as np
         from PIL import Image
-        from midas_depth import MiDaSDepthEstimator
+        from src.midas_depth import MiDaSDepthEstimator
 
         # Create a simple test image
         print("Creating synthetic test image...")
@@ -290,15 +293,15 @@ def main():
     if all_critical_passed:
         print("✓ All critical checks passed!")
         print("\nYou can now run the application:")
-        print("  python app_gui.py              (Web GUI)")
-        print("  python depth_comparison_app.py --input image.jpg  (CLI)")
+        print("  python src/app_gui.py              (Web GUI)")
+        print("  python src/depth_comparison_app.py --input image.jpg  (CLI)")
     else:
         print("❌ Some critical checks failed")
         print("Please fix the issues above before running the application")
 
     if not results['Model Weights']:
         print("\n⚠ Note: Download Depth Anything V2 checkpoint for best results:")
-        print("  cd Depth-Anything-V2/checkpoints")
+        print("  cd models/Depth-Anything-V2/checkpoints")
         print("  wget https://huggingface.co/depth-anything/Depth-Anything-V2-Small/resolve/main/depth_anything_v2_vits.pth")
 
     print("=" * 60 + "\n")

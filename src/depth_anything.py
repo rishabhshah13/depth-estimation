@@ -86,7 +86,7 @@ class DepthEstimator:
             model_size (str): Size of the model to use ('small', 'base', or 'large').
                             Default is 'small' for faster inference.
             checkpoint_dir (str, optional): Directory containing model checkpoints.
-                                          If None, uses './Depth-Anything-V2/checkpoints'
+                                          If None, uses '../models/Depth-Anything-V2/checkpoints'
             device (str, optional): Device to run the model on. If None, auto-detects
                                   the best available device (cuda > mps > cpu).
 
@@ -120,7 +120,7 @@ class DepthEstimator:
         if checkpoint_dir is None:
             # Try to find the Depth-Anything-V2 directory
             current_dir = Path(__file__).parent
-            checkpoint_dir = current_dir / "Depth-Anything-V2" / "checkpoints"
+            checkpoint_dir = current_dir.parent / "models" / "Depth-Anything-V2" / "checkpoints"
         else:
             checkpoint_dir = Path(checkpoint_dir)
 
@@ -141,7 +141,7 @@ class DepthEstimator:
         """
         try:
             # Add Depth-Anything-V2 to path if not already there
-            repo_path = Path(__file__).parent / "Depth-Anything-V2"
+            repo_path = Path(__file__).parent.parent / "models" / "Depth-Anything-V2"
             if repo_path.exists() and str(repo_path) not in sys.path:
                 sys.path.insert(0, str(repo_path))
 

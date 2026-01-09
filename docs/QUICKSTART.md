@@ -13,9 +13,9 @@ pip install -r requirements.txt
 ### Depth Anything V2 (Required)
 
 ```bash
-cd Depth-Anything-V2/checkpoints
+cd models/Depth-Anything-V2/checkpoints
 wget https://huggingface.co/depth-anything/Depth-Anything-V2-Small/resolve/main/depth_anything_v2_vits.pth
-cd ../..
+cd ../../..
 ```
 
 ### MiDaS & Marigold (Automatic)
@@ -27,7 +27,7 @@ cd ../..
 ### Option A: Web GUI (Easiest!)
 
 ```bash
-python app_gui.py
+python src/app_gui.py
 ```
 
 1. Browser opens automatically
@@ -39,12 +39,12 @@ python app_gui.py
 
 ```bash
 # Use example image
-python depth_comparison_app.py \
-    --input Depth-Anything-V2/assets/examples/demo01.jpg \
+python src/depth_comparison_app.py \
+    --input models/Depth-Anything-V2/assets/examples/demo01.jpg \
     --output my_first_comparison.png
 
 # Or use your own image
-python depth_comparison_app.py --input your_image.jpg
+python src/depth_comparison_app.py --input your_image.jpg
 ```
 
 ## ✅ That's It!
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 
 ### "Checkpoint not found" error
 ```bash
-cd Depth-Anything-V2/checkpoints
+cd models/Depth-Anything-V2/checkpoints
 wget https://huggingface.co/depth-anything/Depth-Anything-V2-Small/resolve/main/depth_anything_v2_vits.pth
 ```
 

@@ -12,12 +12,15 @@ This wrapper provides an easy-to-use interface for the Marigold depth estimation
 
 ```
 Depth/
-├── Marigold/                    # Cloned Marigold repository
-│   ├── marigold/               # Core pipeline implementations
-│   ├── requirements.txt        # Marigold dependencies
-│   └── README.md               # Original Marigold documentation
-├── marigold_depth.py           # Main wrapper script (this module)
-├── test_marigold_depth.py      # Test script with examples
+├── models/
+│   └── Marigold/               # Cloned Marigold repository
+│       ├── marigold/           # Core pipeline implementations
+│       ├── requirements.txt    # Marigold dependencies
+│       └── README.md           # Original Marigold documentation
+├── src/
+│   └── marigold_depth.py       # Main wrapper script (this module)
+├── tests/
+│   └── test_marigold_depth.py  # Test script with examples
 └── README.md                   # This file
 ```
 
@@ -33,7 +36,7 @@ cd Depth
 ### 2. Install dependencies
 
 ```bash
-pip install -r Marigold/requirements.txt
+pip install -r models/Marigold/requirements.txt
 ```
 
 Required packages:
@@ -65,7 +68,7 @@ For Apple Silicon (M1/M2/M3):
 ### As a Python Module
 
 ```python
-from marigold_depth import MarigoldDepthEstimator
+from src.marigold_depth import MarigoldDepthEstimator
 
 # Initialize estimator (first run will download model weights ~5GB)
 estimator = MarigoldDepthEstimator()
@@ -90,12 +93,12 @@ This will create:
 
 ```bash
 # Basic usage
-python marigold_depth.py \
+python src/marigold_depth.py \
     --image_path input.jpg \
     --output_path output
 
 # With custom settings
-python marigold_depth.py \
+python src/marigold_depth.py \
     --image_path input.jpg \
     --output_path output \
     --half_precision \
@@ -208,7 +211,7 @@ def save_depth(
 
 ```python
 import numpy as np
-from marigold_depth import MarigoldDepthEstimator
+from src.marigold_depth import MarigoldDepthEstimator
 
 estimator = MarigoldDepthEstimator()
 depth_map, _ = estimator.estimate_depth("input.jpg")
@@ -242,7 +245,7 @@ plt.show()
 ### High-Quality Depth Estimation
 
 ```python
-from marigold_depth import MarigoldDepthEstimator
+from src.marigold_depth import MarigoldDepthEstimator
 
 # Use full precision and large ensemble for best quality
 estimator = MarigoldDepthEstimator(half_precision=False)
@@ -261,7 +264,7 @@ estimator.save_depth(depth_map, "high_quality_output", colored)
 ### Fast Inference
 
 ```python
-from marigold_depth import MarigoldDepthEstimator
+from src.marigold_depth import MarigoldDepthEstimator
 
 # Use half precision and single prediction for speed
 estimator = MarigoldDepthEstimator(half_precision=True)
@@ -278,7 +281,7 @@ depth_map, colored = estimator.estimate_depth(
 
 ```python
 from pathlib import Path
-from marigold_depth import MarigoldDepthEstimator
+from src.marigold_depth import MarigoldDepthEstimator
 
 estimator = MarigoldDepthEstimator()
 
@@ -298,7 +301,7 @@ for img_path in input_dir.glob("*.jpg"):
 ### Using Different Checkpoints
 
 ```python
-from marigold_depth import MarigoldDepthEstimator
+from src.marigold_depth import MarigoldDepthEstimator
 
 # Original CVPR 2024 version (v1.0)
 estimator_v10 = MarigoldDepthEstimator(
@@ -385,7 +388,7 @@ estimator = MarigoldDepthEstimator(
 
 Ensure Marigold repository is in the correct location:
 ```bash
-ls Marigold/marigold/  # Should show pipeline files
+ls models/Marigold/marigold/  # Should show pipeline files
 ```
 
 ## Citation
