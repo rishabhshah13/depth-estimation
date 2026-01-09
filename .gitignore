@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Model weights and checkpoints (too large for git)
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+MiDaS/weights/
+Depth-Anything-V2/checkpoints/*.pth
+Marigold/checkpoints/
+
+# Hugging Face cache
+.cache/
+wandb/
+
+# Output files
+*.png
+*.jpg
+*.jpeg
+*.npy
+!Depth-Anything-V2/assets/**/*.jpg
+!Depth-Anything-V2/assets/**/*.png
+results/
+outputs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+logs/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+/tmp/
+
+# Test outputs
+test_comparison.png
+my_*.png

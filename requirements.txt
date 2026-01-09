@@ -1,0 +1,37 @@
+# Combined Depth Estimation Requirements
+# For Marigold and MiDaS depth estimation models
+
+# Deep Learning Framework
+torch>=2.4.1
+torchvision>=0.19.1
+
+# Diffusion Models (for Marigold)
+diffusers>=0.25.0
+transformers>=4.32.1
+accelerate>=0.22.0
+
+# Scientific Computing
+numpy
+scipy
+
+# Image Processing
+Pillow
+opencv-python>=4.6.0
+
+# MiDaS specific requirements
+timm==0.6.12
+einops==0.6.0
+imutils==0.5.4
+
+# Visualization
+matplotlib
+
+# Web GUI (for app_gui.py)
+gradio>=4.0.0
+
+# Optional: Memory efficient attention (recommended for better performance)
+# Uncomment if you have a compatible GPU
+# xformers==0.0.28
+
+# Optional: Progress bars (already included in diffusers, but listed for clarity)
+# tqdm
